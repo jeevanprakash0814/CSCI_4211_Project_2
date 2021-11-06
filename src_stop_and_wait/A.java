@@ -13,14 +13,16 @@ public class A {
     public void A_input(simulator sim, packet p){
         // TODO: recive data from the other side
         // process the ACK, NACK from B
-        if(lastpacket.get_checksum() == p.get_checksum() && seq == p.acknum) {
+        if(lastpacket.get_checksum() != p.get_checksum()) {
+            if(seq == p.seqnum) {
+                sim.envlist.remove_timer();
+                sim.envlist.start_timer('A',(float)estimated_rtt);
+                sim.to_layer_three('A', lastpacket);
+                state = "WAIT_ACK";
+            }
+        } else if(seq == p.seqnum) {
             sim.envlist.remove_timer();
             state = "WAIT_LAYER5";
-        } else {
-            sim.envlist.remove_timer();
-            sim.envlist.start_timer('A',(float)estimated_rtt);
-            sim.to_layer_three('A', lastpacket);
-            state = "WAIT_ACK";
         }
     }
     public void A_output(simulator sim, msg m){
