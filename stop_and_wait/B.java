@@ -1,8 +1,9 @@
 public class B {
+    int seq;
+
     public B(){
-        // TODO: initialization of the state of B
-        // this.seq
-        // ...
+        // initialization of the state of B
+        this.seq = 0;
     }
     public void B_input(simulator sim,packet pkt){
         // TODO: process the packet recieved from the layer 3

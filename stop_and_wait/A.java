@@ -11,10 +11,12 @@ public class A {
         this.estimated_rtt = 30;
     }
     public void A_input(simulator sim, packet p){
-        // TODO: recive data from the other side
+        // receive data from the other side
         // process the ACK, NACK from B
+        // what to do if the state is already WAIT_LAYER5
+        // state should be WAIT_ACK for this method
         if(lastpacket.get_checksum() != p.get_checksum()) {
-            if(seq == p.seqnum) {
+            if(lastpacket.acknum != p.acknum) {
                 sim.envlist.remove_timer();
                 sim.envlist.start_timer('A',(float)estimated_rtt);
                 sim.to_layer_three('A', lastpacket);
@@ -26,11 +28,23 @@ public class A {
         }
     }
     public void A_output(simulator sim, msg m){
-        // TODO: called from layer 5, pass the data to the other side
-        packet p = new packet(0, 0, m);
+        // called from layer 5, pass the data to the other side
+        // if state is still WAIT_ACK it means ACK has not come back so don't send new data
+        if(state.equals("WAIT_ACK")) return;
+
+        // sets up new packet
+        packet p = new packet(this.seq, this.seq, m);
+        this.seq = this.seq ? 0 : 1;
         lastpacket = new(p);
+
+        // reset timer
+        sim.envlist.remove_timer();
         sim.envlist.start_timer('A',(float)estimated_rtt);
+
+        // send packet to B
         sim.to_layer_three('A', p);
+
+        // reset state
         state = "WAIT_ACK";
     }
     public void A_handle_timer(simulator sim){
