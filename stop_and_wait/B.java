@@ -9,7 +9,11 @@ public class B {
         // TODO: process the packet recieved from the layer 3
         // verify checksum
         // send ACK
-        sim.to_layer_five('B',pkt.payload);
+        if(pkt.checksum == pkt.get_checksum() && pkt.seqnum == this.seq) {
+            sim.to_layer_five('B',pkt.payload);
+            pkt.send_ack(sim, 'B', pkt.acknum);
+            this.seq = this.seq == 1 ? 0 : 1;
+        }
     }
     public void B_output(simulator sim){
 
