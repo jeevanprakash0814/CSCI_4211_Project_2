@@ -41,7 +41,7 @@ public class circular_buffer {
         int r=this.read;
         for (int i=0;i<count;i++){
             pkt_array[i]= this.buffer[r];
-            r = (r+1)%count;
+            r = (r+1)%max;
         }
         return pkt_array;
     }
