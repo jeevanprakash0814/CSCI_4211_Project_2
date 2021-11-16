@@ -85,8 +85,8 @@
     - The packet loss was handled by the timeout handler
     - The corruption was prevented through the checksum
     - All the logic has been explained in detail above
-    
-    [test case 1](./test_case_outputs/test1.jpeg)
+
+    ![test case 1](./test_case_outputs/test1.jpeg)
 2. Test Case 2
     - loss set to 0
     - corruption rate set to 0
