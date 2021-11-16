@@ -20,10 +20,10 @@ public class simulator {
     // do not modify this
     public simulator() {
         // you may want to change the following parameters to adjust the characteristics of the communication channels
-        lossprob= (float) 0.2; // probability that a packet is dropped
-        corruptprob= (float) 0.8; // probability that one bit is packet is flipped
+        lossprob= (float) 0.9; // probability that a packet is dropped
+        corruptprob= (float) 0; // probability that one bit is packet is flipped
         Lambda=10000; // arrival rate of messages from layer 5
-        nsimmax=20; // number of msgs to generate, then stop
+        nsimmax=26; // number of msgs to generate, then stop
         TRACE=0; // for your debugging
 
         nsim=0; // number of messages from 5 to 4 so far

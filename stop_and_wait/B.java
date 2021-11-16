@@ -8,13 +8,16 @@ public class B {
     public void B_input(simulator sim,packet pkt){
         // TODO: process the packet recieved from the layer 3
         // verify checksum
-        // send ACK
         if(pkt.checksum != pkt.get_checksum());
         else if(pkt.seqnum != this.seq) {
+            // send ACK of previous packet to A
             pkt.send_ack(sim, 'B', pkt.acknum);
         }
         else {
+            // send payload to layer 5
             sim.to_layer_five('B',pkt.payload);
+
+            // send ack of received packet to A
             pkt.send_ack(sim, 'B', pkt.acknum);
             this.seq = this.seq == 1 ? 0 : 1;
         }
@@ -23,6 +26,6 @@ public class B {
 
     }
     public void B_handle_timer(simulator sim){
-        System.out.println("I am in B Handle Timer");
+
     }
 }
