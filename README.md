@@ -86,7 +86,7 @@
     - The corruption was prevented through the checksum
     - All the logic has been explained in detail above
 
-    ![test case 1](./test_case_outputs/test1.jpeg)
+    ![test case 1](./test_case_outputs/test1.jpeg "test case 1")
 2. Test Case 2
     - loss set to 0
     - corruption rate set to 0
@@ -94,6 +94,8 @@
     - nsimmax set to 20
     - This is a standard run with no packet loss and corruption of packets
     - All the logic has been explained in detail above
+
+    ![test case 2](./test_case_outputs/test2.jpeg)
 3. Test Case 3
     - loss set to 0
     - corruption rate set to 0
@@ -101,6 +103,8 @@
     - nsimmax set to 26
     - This is a standard run with no packet loss and corruption of packets with more packets sent through
     - All the logic has been explained in detail above
+
+    ![test case 3](./test_case_outputs/test3.jpeg)
 4. Test Case 4
     - loss set to 0.5
     - corruption rate set to 0
@@ -109,6 +113,8 @@
     - This is much higher loss probability at 0.5 with no corruption probability
     - The packet loss was handled by the timeout handler
     - All the logic has been explained in detail above
+
+    ![test case 4](./test_case_outputs/test4.jpeg)
 5. Test Case 5
     - loss set to 0.5
     - corruption rate set to 0.6
@@ -118,6 +124,8 @@
     - The packet loss was handled by the timeout handler
     - The corruption was prevented through the checksum
     - All the logic has been explained in detail above
+
+    ![test case 5](./test_case_outputs/test5.jpeg)
 6. Test Case 6
     - loss set to 0
     - corruption rate set to 0.9
@@ -125,6 +133,8 @@
     - nsimmax set to 26
     - The corruption was prevented through the checksum
     - All the logic has been explained in detail above
+
+    ![test case 6](./test_case_outputs/test6.jpeg)
 7. Test Case 7
     - loss set to 0.9
     - corruption rate set to 0
@@ -133,3 +143,5 @@
     - All packets were sent correctly through this protocol through the use of the timeout functionality
     - The packet loss was handled by the timeout handler
     - All the logic has been explained in detail above
+
+    ![test case 7](./test_case_outputs/test7.jpeg)
