@@ -86,7 +86,7 @@ public class A {
         }
 
         // set a timer here that is 8*estimated_rtt
-        sim.envlist.start_timer('A',(float)window*estimated_rtt);
+        sim.envlist.start_timer('A',(float)estimated_rtt);
         timerSet = true;
 
     }
