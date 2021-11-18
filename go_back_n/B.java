@@ -2,7 +2,7 @@ public class B {
     int seq;
     public B(){
         // initialization of the state of B
-        this.seq = 0;
+        this.seq = 0; // initialize the first expected sequence number
     }
     public void B_input(simulator sim,packet pkt){
         // process the packet recieved from the layer 3
@@ -17,8 +17,12 @@ public class B {
             // send ACK
             pkt.send_ack(sim, 'B', pkt.acknum);
 
-            // increment sequence number
+            // increment next expected sequence number
             this.seq++;
+        } else {
+            // sending NACK
+            int temp = this.seq - 1;
+            pkt.send_ack(sim, 'B', temp);
         }
     }
     public void B_output(simulator sim){
